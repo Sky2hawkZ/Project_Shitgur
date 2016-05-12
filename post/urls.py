@@ -4,6 +4,6 @@ from django.views.generic import TemplateView
 
 
 urlpatterns = [
-    url(r'^$', TemplateView.as_view(template_name='post/base.html'), name='home'),
+    url(r'^$', TemplateView.as_view(template_name='post/index.html'), name='home'),
 
 ]
