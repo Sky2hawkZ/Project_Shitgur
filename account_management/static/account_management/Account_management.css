@@ -1,0 +1,224 @@
+h4 {
+	color: grey;
+}
+body {
+	background-color:black;
+}
+
+.accordion_two, .accordion_two * {
+    -webkit-box-sizing:border-box; 
+    -moz-box-sizing:border-box; 
+    box-sizing:border-box;
+}
+ 
+.accordion_two {
+    overflow:hidden;
+    box-shadow:0px 1px 3px rgba(0,0,0,0.25);
+    border-radius:3px;
+    background:#f7f7f7;
+}
+ 
+/*----- Section Titles -----*/
+.accordion_two-section-title {
+    width:100%;
+    padding:15px;
+    display:inline-block;
+    border-bottom:1px solid #1a1a1a;
+    background:#333;
+    transition:all linear 0.15s;
+    /* Type */
+    font-size:1.200em;
+    text-shadow:0px 1px 0px #1a1a1a;
+    color: White;
+}
+ 
+.accordion_two-section-title.active, .accordion_two-section-title:hover {
+    background:#4c4c4c;
+    /* Type */
+	color: red;
+    text-decoration:none;
+}
+ 
+.accordion_two-section:last-child .accordion_two-section-title {
+    border-bottom:none;
+}
+ 
+/*----- Section Content -----*/
+.accordion_two-section-content {
+    padding:15px;
+    display:none;
+}
+
+
+.log_out {
+  position: relative;
+  float: right;
+  margin-top: -41px;
+  padding-top: 20px;
+  background: #5de3d1;
+  background-image: -webkit-linear-gradient(top, #5de3d1, #70f589);
+  background-image: -moz-linear-gradient(top, #5de3d1, #70f589);
+  background-image: -ms-linear-gradient(top, #5de3d1, #70f589);
+  background-image: -o-linear-gradient(top, #5de3d1, #70f589);
+  background-image: linear-gradient(to bottom, #5de3d1, #70f589);
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0px;
+  font-family: Arial;
+  color: #26cc37;
+  font-size: 20px;
+  padding: 5px 19px 5px 19px;
+  text-decoration: none;
+}
+
+.log_out:hover {
+  background: #8ef5f2;
+  background-image: -webkit-linear-gradient(top, #8ef5f2, #8ef5f2);
+  background-image: -moz-linear-gradient(top, #8ef5f2, #8ef5f2);
+  background-image: -ms-linear-gradient(top, #8ef5f2, #8ef5f2);
+  background-image: -o-linear-gradient(top, #8ef5f2, #8ef5f2);
+  background-image: linear-gradient(to bottom, #8ef5f2, #8ef5f2);
+  text-decoration: none;
+}
+
+.screen_center_refined {
+	position: relative;
+	margin: 0 auto 0 auto;
+	max-width:600px;
+	padding-left: 20px;
+	padding-right: 20px;
+	border-style: solid;
+	border-color: black;
+	border-width: 0.1px;
+	border-radius: 10px;
+	display: block;
+}
+
+.screen_center {
+	position: relative;
+	margin: 0 auto 0 auto;
+}
+
+.accordion {
+  padding: 0;
+  margin: 2em 0;
+  width: 100%;
+  overflow: hidden;
+  font-size: 1em;
+  position: relative;
+}
+
+.accordion__title {
+  border-style: solid;
+  border-width:1px;
+  border-bottom-color: transparent;
+  padding: 0 1em;
+  background: #ccc;
+  color: #222;
+  float: left;
+  line-height: 3;
+  height: 3em;
+  cursor: pointer;
+  margin-right: -.55em;
+  border-top-left-radius: 30px;
+}
+
+.no-js .accordion__title {
+  float: none;
+  height:auto;
+  cursor:auto;
+  margin:0;
+  padding:0 2em;
+}
+
+.accordion__content {
+  float: right;
+  width: 100%;
+  margin: 3em 0 0 -100%;
+  padding: 2em;
+  background: grey;
+}
+
+.no-js .accordion__content {
+  float:left;
+  margin:0;
+}
+
+.accordion__title:hover,
+.accordion__title.active {
+  background: red;
+  color: black;
+}
+
+.no-js .accordion__title:hover {
+  background-color:#ccc;
+  color:#222;
+}
+
+.accordion__title.active {
+  border-top-color: green;
+}
+
+@media (max-width: 48em) {
+  
+  .accordion {
+    border: 1px solid black;
+  }
+  
+  .accordion__title,
+  .accordion__content { 
+    float: none;
+    margin: 0;
+  }
+  
+  .accordion__title:first-child {
+    border:none;
+  }
+  
+ .accordion__title.active {
+  border-top-color:#eee;
+  }
+  
+  .accordion__title.active, .accordion__title:hover {
+    background:#777;
+  }
+  
+  .accordion__title:before {
+  content:"+";
+  text-align:center;
+  width:2em;
+  display:inline-block;
+  }
+ .accordion__title.active:before {
+  content:"-";
+  }
+  
+ .overflow-scrolling {
+  overflow-y: scroll;
+  height:11em;
+  padding:1em 1em 0 1em;
+  -webkit-overflow-scrolling: touch;
+  }
+
+  .accordion__content {
+    position:relative;
+    overflow:hidden;
+    padding:0;
+  }
+  
+   .no-js .accordion__content {
+    padding:1em;
+    overflow:auto;
+    display:block;
+  }
+  
+  .accordion__content:after {
+    position:absolute;
+    top:100%;
+    left:0;
+    width:100%;
+    height:50px;
+    border-radius:10px 0 0 10px / 50% 0 0 50%;
+    box-shadow:-5px 0 10px rgba(0, 0, 0, 0.5);
+    content:'';
+}
