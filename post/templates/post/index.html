@@ -1,6 +1,6 @@
 {% extends 'post/base.html' %}
 
-
+{% load staticfiles %}
 {% block body %}
 <html>
 <head>
@@ -12,12 +12,12 @@
   <meta name="author" content="">
 
   <!-- THESE LINKS BELOW NEED TO BE FIXED -->
-  <link href="bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" >
   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-  <link href="ie10-viewport-bug-workaround.css" rel="stylesheet">
-  <script src="ie-emulation-modes-warning.js"></script>
-  <link rel="stylesheet"  href="style.css" />
-  <link href="cover.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="{% static 'css/ie10-viewport-bug-workaround.css' %}" > -->
+  <script src="{% static 'js/ie-emulation-modes-warning.js' %}"></script>
+  <link rel="stylesheet"  href="{% static 'css/style.css' %}" />
+  <link rel="stylesheet"  href="{% static 'css/cover.css' %}" />
   <!-- END OF LINKS -->
 
 </head>
@@ -104,7 +104,7 @@
 
           <div class="mastfoot">
             <div class="inner">
-              <span onclick="openNav()">open</span>
+              <span class="gallery-button" onclick="openNav()">open</span>
             </div>
           </div>
 
@@ -120,11 +120,11 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="jquery.min.js"><\/script>')</script>
-    <script src="bootstrap.min.js"></script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="ie10-viewport-bug-workaround.js"></script>
-    <script src="js.js"></script>
+    <script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>
+    <script src="{% static 'js/js.js' %}"></script>
     <!-- END OF LINKS -->
   </div>
 </body>
