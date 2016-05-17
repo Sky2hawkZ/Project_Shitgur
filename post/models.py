@@ -10,6 +10,7 @@ class Post(models.Model):
     post_text = models.TextField(max_length=2000)
     post_likes = models.IntegerField(default=0)
     post_views = models.IntegerField(default=0)
+    post_favorited = models.IntegerField(default=0)
     post_dislikes = models.IntegerField(default=0)
     post_image = models.FileField(upload_to='files/images')
     post_tags = models.CharField(max_length=1000, default=None)
