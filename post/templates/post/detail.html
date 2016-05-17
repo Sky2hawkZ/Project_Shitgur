@@ -1,9 +1,22 @@
 {% extends 'post/base.html' %}
 
 {% block body %}
-<h1>some text</h1>
+<div post_main>
+    <h1>some text</h1>
 <p> {{ post.post_text }}</p>
+    <p>{{ post.post_tags }}</p>
 <img src="{{ post.post_image }}"/>
+
+    <a href="#">
+    <span class="glyphicon glyphicon-thumbs-up"></span>
+    </a>
+    <a href="#">
+    <span class="glyphicon glyphicon-thumbs-down"></span>
+    </a>
+<span></span>
+
+</div>
+
 {% endblock %}
 
 
