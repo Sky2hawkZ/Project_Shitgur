@@ -1,22 +1,31 @@
 {% extends 'post/base.html' %}
 
 {% block body %}
-<div post_main>
-    <h1>some text</h1>
-<p> {{ post.post_text }}</p>
-    <p>{{ post.post_tags }}</p>
-<img src="{{ post.post_image }}"/>
+<div class="container">
+    <div post_main>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3>{{ post.post_text }}</h3>
+                        <p>Posted by <a href="#"><span id="username">{{ post.post_user }}</span></a></p>
+                        <img src="https://pixabay.com/static/uploads/photo/2015/05/26/20/29/goat-785289_960_720.jpg" class="img-thumbnail"/>
+                        <div class="panel-footer"><span>
+                            <a href="#"><span class="glyphicon glyphicon-thumbs-up"></span></a
+                        </span>
+                            <span>
+                                <a href="#"><span class="glyphicon glyphicon-thumbs-down"></span></a>
+                            </span>
+                            <h5>{{ post.post_tags }}</h5>
 
-    <a href="#">
-    <span class="glyphicon glyphicon-thumbs-up"></span>
-    </a>
-    <a href="#">
-    <span class="glyphicon glyphicon-thumbs-down"></span>
-    </a>
-<span></span>
 
+  </div>
 </div>
 
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 
