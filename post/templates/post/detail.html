@@ -7,11 +7,18 @@
             <div class="col-md-6 col-md-offset-3">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <h3>{{ post.post_text }}</h3>
+                        <h3>{{ post.post_text }}<button type="button" class="btn btn-default" style="float:right">Next Post
+                            <span class="glyphicon glyphicon-menu-right"></span>
+                        </button>
+                            <button type="button" class="btn btn-default" style="float:right">
+                                <span class="glyphicon glyphicon-menu-left"></span>
+                            </button>
+                        </h3>
                         <p>Posted by <a href="#"><span id="username">{{ post.post_user }}</span></a></p>
                         <img src="https://pixabay.com/static/uploads/photo/2015/05/26/20/29/goat-785289_960_720.jpg" class="img-thumbnail"/>
-                        <div class="panel-footer"><span>
-                            <a href="#"><span class="glyphicon glyphicon-thumbs-up"></span></a
+                        <div class="panel-footer">
+                            <span>
+                            <a href="#"><span class="glyphicon glyphicon-thumbs-up"></span></a>
                         </span>
                             <span>
                                 <a href="#"><span class="glyphicon glyphicon-thumbs-down"></span></a>
