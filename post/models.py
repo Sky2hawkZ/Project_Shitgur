@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.core.urlresolvers import reverse
 
 # Create your models here.
 
@@ -18,7 +19,7 @@ class Post(models.Model):
 
 
 class GalleryPost(models.Model):
-    GalleryPost_image = models.FileField(upload_to='files/images')
+    GalleryPost_image = models.FileField()
     GalleryPost_tags = models.CharField(max_length=250)
     GalleryPost_title = models.CharField(max_length=250)
 

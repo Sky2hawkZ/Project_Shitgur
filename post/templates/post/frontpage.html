@@ -31,43 +31,18 @@
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <div class="nav_wrapper">
 
-      <!-- TEST !-->
-
-      <!-- TEST !-->
-
-
-
-
-
-      <div class="img">
-        <a target="_blank" href="{{GalleryPost.GalleryPost_image.url}}">
+      {% for GalleryPost in all_galleryposts %}
+      <div class="col-xs-3">
+        <a target="_blank" href="">
           <img src="{{GalleryPost.GalleryPost_image.url}}" alt="Forest" width="300" height="200">
         </a>
-        <div class="desc"><h2>{{ GalleryPost.GalleryPost_title}}</h2></div>
+        <div class="desc"><h2>{{GalleryPost.GalleryPost_title}}</h2></div>
       </div>
+      {% endfor %}
 
-      <div class="img">
-        <a target="_blank" href="{{GalleryPost.GalleryPost_image}}">
-          <img src="{{GalleryPost.GalleryPost_image}}" alt="Forest" width="300" height="200">
-        </a>
-        <div class="desc"><h2>{{ GalleryPost.GalleryPost_title}}</h2></div>
-      </div>
-
-      <div class="img">
-        <a target="_blank" href="lights.jpg">
-          <img src="http://i.imgur.com/WYoyTDg.jpg" alt="Northern Lights" width="300" height="200">
-        </a>
-        <div class="desc">Add a description of the image here</div>
-      </div>
-
-      <div class="img">
-        <a target="_blank" href="mountains.jpg">
-          <img src="http://i.imgur.com/JKUnOq4.jpg" alt="Mountains" width="300" height="200">
-        </a>
-        <div class="desc">Add a description of the image here</div>
-      </div>
     </div>
   </div>
+
 
   <!-- GALLERY SIDENAV ENDS HERE YOU FUCKWIT -->
 
