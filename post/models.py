@@ -17,3 +17,10 @@ class Post(models.Model):
         return self.post_text
 
 
+class GalleryPost(models.Model):
+    GalleryPost_image = models.FileField(upload_to='files/images')
+    GalleryPost_tags = models.CharField(max_length=250)
+    GalleryPost_title = models.CharField(max_length=250)
+
+def __str__(self):
+    return self.GalleryPost_title

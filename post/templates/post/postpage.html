@@ -1,0 +1,10 @@
+{% if all_galleryposts %}
+  <h3>Here are all the Gallery posts.</h3>
+  <ul>
+    {% for post_id in all_galleryposts %}
+    <li><a href="/gallery/{{ GalleryPost.id }}"></a> {{GalleryPost.GalleryPost_title}} </li>
+    {% endfor %}
+  </ul>
+{% else %}
+<h3> You don't have any Gallery posts </h3>
+{% endif %}
