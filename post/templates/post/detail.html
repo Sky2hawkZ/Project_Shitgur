@@ -1,0 +1,92 @@
+{% extends 'post/base.html' %}
+{% load staticfiles %}
+{% block body %}
+<head>
+<link rel="stylesheet" href="{% static 'css/comment.css' %}">
+</head>
+<div class="container">
+    <div post_main>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default" id="panel">
+                    <div class="panel-body">
+                        <h4>{{ post.post_text }}<button type="button" class="btn btn-default" style="float:right">Next Post
+                            <span class="glyphicon glyphicon-menu-right"></span>
+                        </button>
+                            <button type="button" class="btn btn-default" style="float:right">  Prev
+                                <span class="glyphicon glyphicon-menu-left"></span>
+                            </button>
+                        </h4>
+                        <p>Posted by <a href="#"><span id="username">{{ post.post_user }}</span> </a><h6 class="text-muted time" style="white-space:nowrap;">{{ post.post_posted | timesince }} ago</h6></p>
+                        <img src="{{ post.post_image.url }}" class="img-thumbnail" id="post_image"/>
+                        <div class="panel-footer">
+                            <div style="float:right">
+                                <div>
+                                    {{ post.post_image.url }}
+                                    Viewed {{ post.post_views }} times
+                                </div>
+                                </br>
+                                </br>
+                                </br>
+                                </div>
+                            <span id="FeelsGoodMan">
+                                <img src="http://chan.catiewayne.com/nc/src/132264456389.png" style="width: 40px; height; 40px;"> {{ post.post_likes }}
+                            </span>
+                            <span id="FeelsBadMan">
+                                <img src="http://vignette3.wikia.nocookie.net/cookietest/images/e/e2/FeelsBadMan.png/revision/latest?cb=20150708084237" style="margin-left: 10px; width: 35px; height: 30px;"> {{ post.post_dislikes }}
+                            </span>
+                             <span id="Favorite">
+                                <img src="http://pngimg.com/upload/heart_PNG706.png" style="margin-left: 10px; width: 35px; height: 30px;"> {{ post.post_favorited }}
+                            </span>
+                            </div>
+                            <p style="padding-top:5px">{{ post.post_tags }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-md-offset-2">
+            <div class="panel panel-white post panel-shadow">
+                <div class="post-heading">
+                    <div class="pull-left image">
+                        <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+                    </div>
+                    <div class="pull-left meta">
+                        <div class="title h5">
+                            <a href="#"><b>{{ comment.comment_user}}</b></a>
+                            made a comment.
+                        </div>
+                        <h6 class="text-muted time">{{ comment.comment_posted | timesince }} ago</h6>
+                    </div>
+                </div>
+                <div class="post-description">
+                    <p> {{ comment.comment_text }}</p>
+                    <div class="stats">
+                         <span id="FeelsGoodMan_comment">
+                                <img src="http://chan.catiewayne.com/nc/src/132264456389.png" style="width: 40px; height; 40px;"> {{ comment.comment_likes }}
+                            </span>
+                            <span id="FeelsBadMan_comment">
+                                <img src="http://vignette3.wikia.nocookie.net/cookietest/images/e/e2/FeelsBadMan.png/revision/latest?cb=20150708084237" style="margin-left: 10px; width: 35px; height: 30px;"> {{ comment.comment_dislikes }}
+                            </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+
+
+
+

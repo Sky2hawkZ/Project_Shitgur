@@ -1,52 +1,80 @@
-<!DOCTYPE html>
-        <html lang="en">
+
+{% load staticfiles %}
+<html>
+
 <head>
     <meta charset="utf-8">
     <title>Shitgur</title>
+    <link rel="stylesheet" type="text/css" href="C:\Users\Oskar\Documents\GitHub\Project_Shitgur\post\static\post\css\base.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/comment.css' %}">
+    <link rel="stylesheet" href="{% static 'css/detail.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
 
-
-{% load staticfiles %}
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </head>
 <body>
 
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
 
+        <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">ShitGur</a>
+             <ul class="nav navbar-nav">
+                 <a class="navbar-brand" href="#">Shitgur</a></ul>
+            <ul class="nav navbar-nav">
+                <span class="glyphicon glyphicon-menu-hamburger">
+            </ul>
         </div>
 
-        <div class="collapse navbar-collapse">
+
+            <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+
+                <li class="">
+                    <a href="#">
+
+                        upload images
+                         <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+
+                    </a>
+                </li>
+            </ul>
+
             <ul class="nav navbar-nav">
                 <li class="">
                     <a href="#">
                         <span class="glyphicon glyphicon-random" aria-hidden="true"></span>
-                        Dank Me
+
                     </a>
                 </li>
             </ul>
+              <ul class="nav navbar-nav navbar-right">
+                  <li class=""><a href="#"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
+                  <li class=""><a href="#">sign in</a></li>
+                  <li class=""><a href="#">sign up</a></li>
+              </ul>
+            </div>
         </div>
     </div>
 </nav>
 
-{% block body %}
-{% endblock %}
+</br>
 
+<div class="container">
+    <div class="row">
+         <div class="col-xs-4 col-md-8">
+          {% block body %}{% endblock %}
+         </div>
+    </div>
+</div>
 </body>
 </html>
