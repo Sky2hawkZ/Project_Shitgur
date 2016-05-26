@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.core.urlresolvers import reverse
 
 # Create your models here.
 
@@ -19,7 +20,6 @@ class Post(models.Model):
     def __str__(self):
         return self.post_text
 
-
 class Comment(models.Model):
     comment_posted = models.DateTimeField('DateTime published')
     comment_text = models.TextField(max_length=2000)
@@ -32,3 +32,10 @@ class Comment(models.Model):
     def __str__(self):
         return self.comment_text
 
+class GalleryPost(models.Model):
+    GalleryPost_image = models.FileField()
+    GalleryPost_tags = models.CharField(max_length=250)
+    GalleryPost_title = models.CharField(max_length=250)
+
+def __str__(self):
+    return self.GalleryPost_title
