@@ -120,3 +120,19 @@ border-left-color: #2dcb73;
 .status-upload form button > i {
 margin-right: 7px;
 }
+
+.commet_box_surrounding {
+
+ box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
+}
+
+#comment_box{
+background: black;
+box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
+
+
+#panel{
+box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
+
+}
+}

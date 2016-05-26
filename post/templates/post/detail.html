@@ -22,12 +22,10 @@
                         <div class="panel-footer">
                             <div style="float:right">
                                 <div>
-                                    {{ post.post_image.url }}
                                     Viewed {{ post.post_views }} times
                                 </div>
                                 </br>
-                                </br>
-                                </br>
+
                                 </div>
                             <span id="FeelsGoodMan">
                                 <img src="http://chan.catiewayne.com/nc/src/132264456389.png" style="width: 40px; height; 40px;"> {{ post.post_likes }}
@@ -49,6 +47,8 @@
 
 
 </br>
+
+ <!-- for comment in list !-->
 
 <div class="container">
     <div class="row">
@@ -80,12 +80,17 @@
             </div>
         </div>
     </div>
-     <link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
+</div>
+
+
+    <!-- If user is logged on. !-->
 <div class="container">
     <div class="row">
     <div class="col-sm-8 col-md-offset-2">
-    						<div class="widget-area no-padding blank panel-shadow">
-								<div class="status-upload">
+        <div class="panel panel-default" id="panel2">
+                    <div class="panel-shadow">
+    						<div id="comment_box">
+								<div class="status-upload" >
 									<form>
 										<textarea placeholder="Post a comment!"></textarea>
 										<button type="submit" class="btn btn-success green"></i>Post</button>
@@ -94,6 +99,10 @@
 							</div><!-- Widget Area -->
 						</div>
                     </div>
+        </div>
+        </div>
+    </div>
+    </div>
 </div>
 
 
