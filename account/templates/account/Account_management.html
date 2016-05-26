@@ -1,0 +1,105 @@
+{% extends "post/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+{% block title %}Account management{% endblock %}
+{% block body %}
+		<h4>Account management, welcome {{ user.first_name }}</h4>
+		<br>
+		<div class="screen_center">
+			<div class="screen_center_refined">
+				<!--/first accordion(profile)-->
+				<dl class="accordion">
+				  {% block error %}{% endblock error %}
+			      {% block success %}{% endblock success %}
+				  <dt class="accordion__title">Profile</dt>
+				  <dd class="accordion__content">
+					<div action="{% url "fetch_user_data" %}" class="fetch_details">
+						<p><b>Profile image:</b></p>
+						<br>
+						<img src="{{ user_data.image }}" width="145" height="126" alt="Can't display image" id="user_image">
+						<br>
+						<p><b>First name:</b> {{ user.first_name }}</p>
+						<br>
+						<p><b>Last name:</b> {{ user.last_name }}</p>
+						<br>
+						<p><b>Gender:</b> {{ user_data.gender }}</p>
+						<br>
+						<p><b>About:</b> {{ user_data.about }}</p>
+					</div>
+				  </dd>
+				  <!--/second accordion(favorites)-->
+				  <dt class="accordion__title">Favorites</dt>
+				  <dd class="accordion__content">
+					<div class="accordion_two">
+						<div class="accordion_two-section">
+							<!--/first nested accordion(favorite images)-->
+							<a class="accordion_two-section-title" href="#accordion_1 ">Favorite images</a>
+							<div id="accordion_1" class="accordion_two-section-content">
+								<p>Add images marked as favorite here</p>
+							</div><!--end .accordion-section-content-->
+							<!--/second nested accordion(favorite comments)-->
+							<a class="accordion_two-section-title" href="#accordion_2 ">Favorite comments</a>
+							<div id="accordion_2" class="accordion_two-section-content">
+								<p>Add comments marked as favorite here</p>
+							</div><!--end .accordion-section-content-->
+						</div><!--end .accordion-section-->
+					</div><!--end .accordion-->
+				  </dd>
+				  <!--/third accordion(details)-->
+				  <dt class="accordion__title">Details</dt>
+				  <dd class="accordion__content">
+					<form action="{% url "update_user_info" %}" method="post"> {% csrf_token %}
+						<div class="input_field">
+							<p><b>First name:</b> </p><input type="text" name="first_name"><br>
+							<br>
+							<p><b>Last name:</b> </p><input type="text" name="last_name"><br>
+							<br>
+							<p><b>Date of birth:</b> </p><input type="text" name="date_of_birth"><br>
+							<br>
+							<p><b>Gender:</b> </p>
+							<select name="gender">
+								<option value="Male">Male</option>
+								<option value="Female">Female</option>
+								<option value="Not_specified" selected>Not specified</option>
+							</select><br>
+							<br>
+							<p><b>Country:</b> </p><input type="text" name="country"><br>
+							<br>
+							<p><b>About:</b> </p><textarea rows="4" cols="50" name="about" form="usrform"></textarea><br>
+						</div>
+						<br>
+						<input id="submit_button" type="submit" value="Save changes">
+					</form>
+				  </dd>
+				  <!--/third accordion(favorites)-->
+				  <dt class="accordion__title">Security</dt>
+				  <dd class="accordion__content">
+					<form action="{% url "update_password" %}" method="post"> {% csrf_token %}
+						<div class="input_field">
+							<p><b>Current password:</b></p><input type="password" name="current_password"><br>
+							<br>
+							<p><b>New password:</b></p><input type="password" name="new_password"><br>
+							<br>
+							<p><b>Repeat password:</b></p><input type="password" name="repeat_password"><br>
+						</div>
+						<br>
+						<input id="button" type="submit" value="Update password">
+					</form>
+				  </dd>
+				</dl>
+			</div>
+		<!--/static files-->
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+		<!-- Latest compiled JavaScript -->
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="{% static 'account/Account_management.css' %}"/>
+		<script src="{% static 'account/jquery-1.12.3.js' %}"></script>
+		<script src="{% static 'account/Account_management.js' %}"></script>
+		<!--/static files-->
+		</div>
+{% endblock body %}
+{% endblock %}

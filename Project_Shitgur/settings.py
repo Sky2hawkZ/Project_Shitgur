@@ -29,10 +29,12 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+# 'account_management',
+# 'account_login_registration',
 
 INSTALLED_APPS = [
-    'account_management',
-    'account_login_registration',
+    'Project_Shitgur',
+    'account.apps.AccountConfig',
     'post',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -58,7 +60,7 @@ ROOT_URLCONF = 'Project_Shitgur.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [''],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -102,6 +104,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTH_PROFILE_MODULE = 'account.user_data'
 
 
 # Internationalization
