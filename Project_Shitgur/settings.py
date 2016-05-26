@@ -117,11 +117,14 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+MEDIA_ROOT = '/Documents/GitHub/Project_Shitgur/media/'
+MEDIA_URL = '/media/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
-
+STATIC_ROOT = "/Github/Project_Shitgur/static/"
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     "post/static/post/",
+    os.path.join(BASE_DIR, "static"),
+    MEDIA_ROOT
 )
