@@ -2,14 +2,11 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.contrib.auth.models import User
-
-
-
-# Create your models here.
+from datetime import datetime
 
 
 class Post(models.Model):
-    post_posted = models.DateTimeField('DateTime published')
+    post_posted = models.DateTimeField(default=datetime.now())
     post_text = models.TextField(max_length=2000)
     post_points = models.IntegerField(default=0)
     post_views = models.IntegerField(default=0)
@@ -24,7 +21,7 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    comment_posted = models.DateTimeField('DateTime published')
+    comment_posted = models.DateTimeField(default=datetime.now())
     comment_text = models.TextField(max_length=2000)
     comment_favorited = models.IntegerField(default=0)
     comment_points = models.IntegerField(default=0)
@@ -33,6 +30,47 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.comment_text
+
+    @classmethod
+    def create(cls, text, user, post):
+        comment = cls(comment_text=text, comment_user=user, comment_post=post)
+        return comment
+
+
+class Points_Post(models.Model):
+    points_post_post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    points_post_user = models.ForeignKey(User, on_delete=models.CASCADE)
+    vote_post = {
+        ('L', 'Like'),
+        ('D', 'Dislike'),
+    }
+
+    IsFavorited_post = {
+        ('Y', 'Yes'),
+        ('N', 'No'),
+    }
+    points_post_isFavorited = models.CharField(max_length=1, choices=IsFavorited_post, default='N', null=True)
+    points_post_vote = models.CharField(max_length=1, choices=vote_post, default='N', null=True)
+
+
+
+class Points_Comment(models.Model):
+    points_comment_post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    points_comment_user = models.ForeignKey(User, on_delete=models.CASCADE)
+    points_comment_comment = models.ForeignKey(Comment, on_delete=models.CASCADE, default=None)
+    vote_comment = {
+        ('L', 'Like'),
+        ('D', 'Dislike'),
+    }
+
+    IsFavorited_comment = {
+        ('Y', 'Yes'),
+        ('N', 'No'),
+    }
+    points_comment_isFavorited = models.CharField(max_length=1, choices=IsFavorited_comment, default='N', null=True)
+    points_comment_vote = models.CharField(max_length=1, choices=vote_comment, null=True)
+
+
 
 
 

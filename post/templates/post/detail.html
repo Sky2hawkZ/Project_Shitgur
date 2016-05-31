@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% load humanize %}
 {% block body %}
-<head>
+<head xmlns="http://www.w3.org/1999/html">
 <link rel="stylesheet" href="{% static 'css/comment.css' %}">
 </head>
 <div class="container">
@@ -32,13 +32,15 @@
 
                                 </div>
                             <span id="FeelsGoodMan">
-                                <img src="http://chan.catiewayne.com/nc/src/132264456389.png" style="width: 40px; height; 40px;">
+                              <a href="#">  <img src="http://chan.catiewayne.com/nc/src/132264456389.png" style="width: 40px; height; 40px;"> </a>
                             </span>
                             <span id="FeelsBadMan">
-                                <img src="http://vignette3.wikia.nocookie.net/cookietest/images/e/e2/FeelsBadMan.png/revision/latest?cb=20150708084237" style="margin-left: 10px; width: 35px; height: 30px;"> {{ post.post_dislikes }}
+                               <a href="#"> <img src="http://vignette3.wikia.nocookie.net/cookietest/images/e/e2/FeelsBadMan.png/revision/latest?cb=20150708084237" style="margin-left: 10px; width: 35px; height: 30px;">  </a> {{ post.post_dislikes }}
                             </span>
                              <span id="Favorite">
-                                <img src="http://pngimg.com/upload/heart_PNG706.png" style="margin-left: 10px; width: 35px; height: 30px;"> {{ post.post_favorited }}
+
+                              <a href="#">  <img src="http://pngimg.com/upload/heart_PNG706.png" style="margin-left: 10px; width: 35px; height: 30px;"> </a>{{ post.post_favorited }}
+
                             </span>
                             </div>
                             <p style="padding-top:5px">{{ post.post_tags }}</p>
@@ -96,14 +98,18 @@
     <div class="row">
         <div class="col-sm-8 col-md-offset-2">
             <div class="panel panel-white post panel-shadow">
-                <div id="comment_box">
+                <div id="comment_box" class="input-field">
 								<div class="status-upload" >
-									<form>
-										<textarea placeholder="Post a comment!"></textarea>
+									<form action="{% url "post_comment" %}" method="post">
+                                    {% csrf_token %}
+
+                                    <input type="hidden" name="pk" value="{{ post.id }}">
+										<textarea placeholder="Post a comment!" name="comment_text"></textarea>
 										<button type="submit" class="btn btn-success green"></i>Post</button>
 									</form>
 								</div>
 							</div>
+                </div>
                 </div>
             </div>
         </div>
