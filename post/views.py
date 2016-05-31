@@ -1,10 +1,14 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView
-from django.shortcuts import render, Http404
+from django.shortcuts import render, Http404, get_object_or_404
 from django.db import models
-from django.http import HttpResponse
-from models import Post, Comment
+from django.http import HttpResponse, Http404
+from models import Post, Comment, GalleryPost
 
+def index(request):
+    all_gallery_posts = Post.objects.all()
+    context = {'all_gallery_posts': all_gallery_posts}
+    return render(request, 'post/frontpage.html', context)
 
 def detail(request, post_id):
     try:
@@ -15,4 +19,3 @@ def detail(request, post_id):
     except p.DoesNotExist:
         raise Http404("Post does not exist")
     return render(request, 'post/detail.html', {'post': p, 'comment': c})
-

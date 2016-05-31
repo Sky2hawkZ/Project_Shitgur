@@ -31,12 +31,12 @@
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <div class="nav_wrapper">
 
-      {% for GalleryPost in all_galleryposts %}
+      {% for gallerypost in all_gallery_posts %}
       <div class="col-xs-3">
-        <a target="_blank" href="">
-          <img src="{{GalleryPost.GalleryPost_image.url}}" alt="Forest" width="300" height="200">
+        <a target="" href="{% url 'post:gallery' post_id=gallerypost.id %}">
+          <img src="{{gallerypost.post_image.url}}" width="300" height="200">
         </a>
-        <div class="desc"><h2>{{GalleryPost.GalleryPost_title}}</h2></div>
+        <div class="desc"><h2>{{gallerypost.post_text}}</h2></div>
       </div>
       {% endfor %}
 
