@@ -2,7 +2,6 @@
 {% load staticfiles %}
 
 {% block content %}
-{% block title %}Account management{% endblock %}
 {% block body %}
 		<h4>Account management, welcome {{ user.first_name }}</h4>
 		<br>
@@ -16,16 +15,15 @@
 				  <dd class="accordion__content">
 					<div action="{% url "fetch_user_data" %}" class="fetch_details">
 						<p><b>Profile image:</b></p>
-						<br>
-						<img src="{{ user_data.image }}" width="145" height="126" alt="Can't display image" id="user_image">
+						<img src="{{ user.user_data.user_image.url }}" width="145" height="126" alt="Can't display image" id="user_image"><br>
 						<br>
 						<p><b>First name:</b> {{ user.first_name }}</p>
 						<br>
 						<p><b>Last name:</b> {{ user.last_name }}</p>
 						<br>
-						<p><b>Gender:</b> {{ user_data.gender }}</p>
+						<p><b>Gender:</b> {{ user.user_data.get_gender_display }}</p>
 						<br>
-						<p><b>About:</b> {{ user_data.about }}</p>
+						<p><b>About:</b><br>{{ user.user_data.about }}</p>
 					</div>
 				  </dd>
 				  <!--/second accordion(favorites)-->
@@ -36,12 +34,14 @@
 							<!--/first nested accordion(favorite images)-->
 							<a class="accordion_two-section-title" href="#accordion_1 ">Favorite images</a>
 							<div id="accordion_1" class="accordion_two-section-content">
-								<p>Add images marked as favorite here</p>
+								<p>This is where favorite images should be.</p>
+								<p>Note: Should be, didn't say that the stuff is here... at all</p>
 							</div><!--end .accordion-section-content-->
 							<!--/second nested accordion(favorite comments)-->
 							<a class="accordion_two-section-title" href="#accordion_2 ">Favorite comments</a>
 							<div id="accordion_2" class="accordion_two-section-content">
-								<p>Add comments marked as favorite here</p>
+								<p>This is where favorite comments should be.</p>
+								<p>Note: Should be, didn't say that the stuff is here... at all</p>
 							</div><!--end .accordion-section-content-->
 						</div><!--end .accordion-section-->
 					</div><!--end .accordion-->
@@ -49,24 +49,22 @@
 				  <!--/third accordion(details)-->
 				  <dt class="accordion__title">Details</dt>
 				  <dd class="accordion__content">
-					<form action="{% url "update_user_info" %}" method="post"> {% csrf_token %}
+					<form action="{% url "update_user_info" %}" method="post" enctype='multipart/form-data'> {% csrf_token %}
 						<div class="input_field">
-							<p><b>First name:</b> </p><input type="text" name="first_name"><br>
+							<p><b>Profile image:</b> </p>{{user_data_form.user_image}}<br>
+							<p><b>First name:</b> </p>{{user_form.first_name}}<br>
 							<br>
-							<p><b>Last name:</b> </p><input type="text" name="last_name"><br>
+							<p><b>Last name:</b> </p>{{user_form.last_name}}<br>
 							<br>
-							<p><b>Date of birth:</b> </p><input type="text" name="date_of_birth"><br>
+							<p><b>Date of birth:</b> </p>{{user_data_form.date_of_birth}}<br>
 							<br>
 							<p><b>Gender:</b> </p>
-							<select name="gender">
-								<option value="Male">Male</option>
-								<option value="Female">Female</option>
-								<option value="Not_specified" selected>Not specified</option>
-							</select><br>
+							{{ user_data_form.gender }}<br>
+							{{user_form.gender.errors}}
 							<br>
-							<p><b>Country:</b> </p><input type="text" name="country"><br>
+							<p><b>Country:</b> </p>{{user_data_form.country}}<br>
 							<br>
-							<p><b>About:</b> </p><textarea rows="4" cols="50" name="about" form="usrform"></textarea><br>
+							<p><b>About:</b> </p>{{user_data_form.about}}<br>
 						</div>
 						<br>
 						<input id="submit_button" type="submit" value="Save changes">
