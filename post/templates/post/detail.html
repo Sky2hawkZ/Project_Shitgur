@@ -4,6 +4,10 @@
 {% block body %}
 <head xmlns="http://www.w3.org/1999/html">
 <link rel="stylesheet" href="{% static 'css/comment.css' %}">
+        <link rel="stylesheet" href="{% static 'css/comment.css' %}">
+    <link rel="stylesheet" href="{% static 'css/comment_box.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/detail.css' %}">
 </head>
 <div class="container">
     <div post_main>
@@ -102,7 +106,6 @@
 								<div class="status-upload" >
 									<form action="{% url "post_comment" %}" method="post">
                                     {% csrf_token %}
-
                                     <input type="hidden" name="pk" value="{{ post.id }}">
 										<textarea placeholder="Post a comment!" name="comment_text"></textarea>
 										<button type="submit" class="btn btn-success green"></i>Post</button>

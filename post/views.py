@@ -20,17 +20,6 @@ def detail(request, post_id):
 
 
 def user_post_like(request):
-    current_user = request.user
-    current_post = request.post
-    user_post_like = Points_Comment.objects.filter(Post=current_post, User=current_user)
-
-    if user_post_like is None:
-        like = Points_Post
-        like.points_comment_user = current_user
-        like.points_comment_post = current_post
-        like.points_comment_vote = 'L'
-        like.IsFavorited_comment = 'N'
-        like.save()
 
     return None
 
@@ -64,7 +53,6 @@ def user_post_favorite(request):
         like.points_post_post = current_post
         like.points_post_isFavorited= 'Y'
         like.save()
-        
 
     return None
 
