@@ -3,23 +3,23 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>Shitgur</title>
-    <link rel="stylesheet" type="text/css" href="C:\Users\Oskar\Documents\GitHub\Project_Shitgur\post\static\post\css\base.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{% static 'css/comment.css' %}">
-    <link rel="stylesheet" href="{% static 'css/comment_box.css' %}">
-
-    <link rel="stylesheet" href="{% static 'css/detail.css' %}">
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <meta charset="utf-8">
+  <title>Shitgur</title>
+  <link rel="stylesheet" type="text/css" href="C:\Users\Oskar\Documents\GitHub\Project_Shitgur\post\static\post\css\base.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="{% static 'css/comment.css' %}">
+  <link rel="stylesheet" href="{% static 'css/comment_box.css' %}">
+  <link rel="stylesheet" href="{% static 'css/fix.css' %}">
+  <link rel="stylesheet" href="{% static 'css/detail.css' %}">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
 
 </head>
@@ -43,32 +43,66 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li class="active"><a href="{% url 'admin:index' %}">Admin<span class="sr-only">(current)</span></a></li>
-          <li><a href="#">Upload</a></li>
+          <li>
+            <a type="button" data-toggle="modal" data-target="#myModal">Upload</a>
+
+            <!-- Modal -->
+            <div id="myModal" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Upload File</h4>
+                  </div>
+
+                  <div class="modal-body">
+                    <form>
+                      <div class="form-group">
+                        <label for="PostTitle">Title</label>
+                        <input type="Title" class="form-control" id="Title" placeholder="Title">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="Tags">Tags</label>
+                        <input type="Tag" class="form-control" id="Tag" placeholder="Tag">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="exampleInputFile">File input</label>
+                        <input type="file" id="Upload File">
+                      </div>
+
+                      <button type="Upload" class="btn btn-default">Upload</button>
+                    </form>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+          </li>
         </ul>
         <form class="navbar-form navbar-left" role="search">
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Search">
           </div>
-          <button type="submit" class="btn btn-default">Submit</button>
         </form>
         <ul class="nav navbar-nav navbar-right">
 
-                    
+
           <li><a href="{%url 'account' %}"> Log in / Register </a></li>
 
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
-    </nav>
+  </nav>
 
 </br>
 
-<div class="container">
-    <div class="row">
-         <div class="col-xs-4 col-md-8">
-          {% block body %}{% endblock %}
-         </div>
-    </div>
-</div>
+{% block body %}{% endblock %}
 </body>
 </html>

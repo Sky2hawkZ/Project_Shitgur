@@ -3,7 +3,7 @@ from django.views.generic.edit import CreateView
 from django.shortcuts import render, Http404, get_object_or_404
 from django.db import models
 from django.http import HttpResponse, Http404
-from models import Post, Comment, GalleryPost
+from models import Post, Comment
 
 def index(request):
     all_gallery_posts = Post.objects.all()

@@ -32,10 +32,10 @@ class Comment(models.Model):
     def __str__(self):
         return self.comment_text
 
-class GalleryPost(models.Model):
-    GalleryPost_image = models.FileField()
-    GalleryPost_tags = models.CharField(max_length=250)
-    GalleryPost_title = models.CharField(max_length=250)
+# class GalleryPost(models.Model):
+#    GalleryPost_image = models.FileField()
+#    GalleryPost_tags = models.CharField(max_length=250)
+#    GalleryPost_title = models.CharField(max_length=250)
 
-def __str__(self):
-    return self.GalleryPost_title
+# def __str__(self):
+#    return self.GalleryPost_title
