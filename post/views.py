@@ -7,7 +7,6 @@ from django.contrib.auth.decorators import login_required
 from models import Post, Comment, Points_Post, Points_Comment
 from forms import UploadImageForm
 from datetime import datetime
->>>>>>> origin/master
 
 def index(request):
     all_gallery_posts = Post.objects.all()
