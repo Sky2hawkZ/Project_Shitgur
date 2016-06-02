@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # 'account_login_registration',
 
 INSTALLED_APPS = [
+    'django.contrib.humanize',
     'Project_Shitgur',
     'account.apps.AccountConfig',
     'post',
