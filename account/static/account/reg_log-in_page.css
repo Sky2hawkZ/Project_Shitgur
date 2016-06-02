@@ -14,7 +14,8 @@ input:focus{
 }
 .flat-form {
   background: #34495e;  /*tablebg e74c3c #34495e  #88565b ed7271*/
-  margin: 100px auto;
+  /* set navbar to 100 if navbar fixed */
+  margin: 50 auto;
   width: 490px;
   height: 440px;
   position: relative;

@@ -1,0 +1,122 @@
+{% extends 'post/base.html' %}
+
+{% load staticfiles %}
+{% block body %}
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- THESE LINKS BELOW NEED TO BE FIXED -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" >
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <link rel="stylesheet" href="{% static 'css/ie10-viewport-bug-workaround.css' %}" >
+  <script src="{% static 'js/ie-emulation-modes-warning.js' %}"></script>
+  <link rel="stylesheet"  href="{% static 'css/style.css' %}" />
+  <link rel="stylesheet"  href="{% static 'css/cover.css' %}" />
+  <!-- END OF LINKS -->
+
+</head>
+
+
+<!-- GALLERY SIDENAV STARTS HERE YOU ILLITERATE FUCKWIT -->
+
+<body>
+
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="nav_wrapper">
+
+      {% for gallerypost in all_gallery_posts %}
+      <div class="col-xs-3">
+        <a target="" href="{% url 'post:gallery' post_id=gallerypost.id %}">
+          <img src="{{gallerypost.post_image.url}}" width="300" height="200">
+        </a>
+        <div class="desc"><h2>{{gallerypost.post_text}}</h2></div>
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+
+
+  <!-- GALLERY SIDENAV ENDS HERE YOU FUCKWIT -->
+
+  <!-- MAIN PAGE STARTS HERE YOU ILLITERATE FUCKWIT -->
+  <div id="main">
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+            </div>
+          </div>
+
+          <div class="inner cover">
+            <h1 class="cover-heading">Cover your page.</h1>
+            <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-4">
+              <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+              <h3>Post of the day</h3>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+              <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+              <h3>Shitpost of the day</h3>
+            </div><!-- /.col-lg-4 -->
+
+            {% for gallerypost in all_gallery_posts %}
+              {% if gallerypost == post_IsAdvertised %}
+                <div class="col-lg-4">
+                    <img class="img-circle" src="{{gallerypost.post_image.url}}" alt="Generic placeholder image" href="{% url 'post:gallery' post_id=gallerypost.id %}" width="140" height="140">
+                  <h3>Advertised Post</h3>
+                </div><!-- /.col-lg-4 -->
+              {% endif %}
+            {% endfor %}
+          </div><!-- /.row -->
+          <div class="row">
+            <div class="panel panel-inverse">
+              <div class="panel-body">
+                Basic panel example
+              </div>
+            </div>
+          </div>
+<!-- TOP COMMENTS STARTS HERE YOU ILLITERATE FUCKWIT !-->
+          <div class="mastfoot">
+            <div class="inner">
+
+            </div>
+          </div>
+  <!-- TOP COMMENTS ENDS HERE YOU ILLITERATE FUCKWIT !-->
+        </div>
+        <span class="gallery-button" onclick="openNav()"><span class="glyphicon glyphicon-th"></span></span>
+      </div>
+
+    </div>
+
+    <!-- THESE LINKS BELOW NEED TO BE FIXED -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>
+    <script src="{% static 'js/js.js' %}"></script>
+    <!-- END OF LINKS -->
+  </div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,15 @@
+html {
+  overflow: hidden;
+  height: 100%;
+}
+body {
+  overflow: auto;
+  height: 100%;
+}
+
+/* unset bs3 setting */
+.modal .modal-open {
+  max-height: 420px;
+  overflow-y: auto;
+  color: black;
+}
