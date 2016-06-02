@@ -3,6 +3,10 @@ from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
+from django.core.urlresolvers import reverse
+
+# Create your models here.
+>>>>>>> origin/master
 
 
 class Post(models.Model):
@@ -19,7 +23,6 @@ class Post(models.Model):
     def __str__(self):
         return self.post_text
 
-
 class Comment(models.Model):
     comment_posted = models.DateTimeField(default=datetime.now())
     comment_text = models.TextField(max_length=2000)
@@ -30,7 +33,6 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.comment_text
-
 
 class Points_Post(models.Model):
     points_post_post = models.ForeignKey(Post, on_delete=models.CASCADE)
@@ -72,9 +74,6 @@ class Points_Comment(models.Model):
 
     def __str__(self):
         return "Is favorited: " + self.points_comment_isFavorited + " Voted: " + self.points_comment_vote
-
-
-
 
 
 

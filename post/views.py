@@ -1,11 +1,15 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView
-from django.shortcuts import render, Http404
+from django.shortcuts import render, Http404, get_object_or_404
 from django.db import models
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.contrib.auth.decorators import login_required
 from models import Post, Comment, Points_Post, Points_Comment
 
+def index(request):
+    all_gallery_posts = Post.objects.all()
+    context = {'all_gallery_posts': all_gallery_posts}
+    return render(request, 'post/frontpage.html', context)
 
 def detail(request, post_id):
     try:
@@ -17,8 +21,6 @@ def detail(request, post_id):
     except post.DoesNotExist:
         return render(request, 'post/DoesNotExist.html')
     return render(request, 'post/detail.html', {'post': post, 'comment': out})
-
-
 def post_next(request, post_id):
     new_id = str(int(post_id)+1)
     try:
@@ -240,15 +242,4 @@ def post_comment(request):
             tmp.save()
             out = Comment.objects.filter(comment_post=post_id)
             return render(request, 'post/detail.html', {'post': post, 'comment': out})
-
-
-
-
-
-
-
-
-
-
-
 
