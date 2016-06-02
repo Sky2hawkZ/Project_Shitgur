@@ -63,6 +63,44 @@
               </ul>
             </div>
         </div>
+        {% elif  user.is_authenticated %}
+               <div class="container">
+        <div class="navbar-header">
+             <ul class="nav navbar-nav">
+                 <a class="navbar-brand" href="#">Shitgur</a></ul>
+            <ul class="nav navbar-nav">
+                <span class="glyphicon glyphicon-menu-hamburger">
+            </ul>
+        </div>
+
+
+            <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+
+                <li class="">
+                    <a href="#">
+
+                        upload images
+                         <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav">
+                <li class="">
+                    <a href="#">
+                        <span class="glyphicon glyphicon-random" aria-hidden="true"></span>
+
+                    </a>
+                </li>
+            </ul>
+              <ul class="nav navbar-nav navbar-right">
+                  <li class=""><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
+                  <li class=""><a href="#">Log off</a></li>
+              </ul>
+            </div>
+        </div>
         {% endif %}
     </div>
 </nav>
