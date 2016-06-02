@@ -3,7 +3,9 @@ from django.views.generic.edit import CreateView
 from django.shortcuts import render, Http404, get_object_or_404
 from django.db import models
 from django.http import HttpResponse, Http404
-from models import Post, Comment
+from post.models import Post, Comment
+from forms import UploadImageForm
+from datetime import datetime
 
 def index(request):
     all_gallery_posts = Post.objects.all()
@@ -19,3 +21,14 @@ def detail(request, post_id):
     except p.DoesNotExist:
         raise Http404("Post does not exist")
     return render(request, 'post/detail.html', {'post': p, 'comment': c})
+
+def upload_post(request):
+    upload_form = UploadImageForm(request.POST or None, request.FILES)
+    context = {'upload_form': upload_form}
+    print(context)
+    if upload_form.is_valid():
+        print(context)
+        upload_form.save()
+        return render(request, 'post/frontpage.html', context)
+    else:
+        return render(request, 'post/frontpage.html', context)
