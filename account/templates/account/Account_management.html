@@ -27,25 +27,25 @@
 					</div>
 				  </dd>
 				  <!--/second accordion(favorites)-->
-				  <dt class="accordion__title">Favorites</dt>
+				  <!--<dt class="accordion__title">Favorites</dt>
 				  <dd class="accordion__content">
 					<div class="accordion_two">
 						<div class="accordion_two-section">
-							<!--/first nested accordion(favorite images)-->
+							<!--
 							<a class="accordion_two-section-title" href="#accordion_1 ">Favorite images</a>
 							<div id="accordion_1" class="accordion_two-section-content">
 								<p>This is where favorite images should be.</p>
 								<p>Note: Should be, didn't say that the stuff is here... at all</p>
-							</div><!--end .accordion-section-content-->
-							<!--/second nested accordion(favorite comments)-->
+							</div>
+
 							<a class="accordion_two-section-title" href="#accordion_2 ">Favorite comments</a>
 							<div id="accordion_2" class="accordion_two-section-content">
 								<p>This is where favorite comments should be.</p>
 								<p>Note: Should be, didn't say that the stuff is here... at all</p>
-							</div><!--end .accordion-section-content-->
-						</div><!--end .accordion-section-->
-					</div><!--end .accordion-->
-				  </dd>
+							</div>
+						</div>
+					</div>
+				  </dd>-->
 				  <!--/third accordion(details)-->
 				  <dt class="accordion__title">Details</dt>
 				  <dd class="accordion__content">
@@ -56,7 +56,7 @@
 							<br>
 							<p><b>Last name:</b> </p>{{user_form.last_name}}<br>
 							<br>
-							<p><b>Date of birth:</b> </p>{{user_data_form.date_of_birth}}<br>
+							<p><b>Date of birth(YYYY-MM-DD):</b> </p>{{user_data_form.date_of_birth}}<br>
 							<br>
 							<p><b>Gender:</b> </p>
 							{{ user_data_form.gender }}<br>
@@ -93,7 +93,7 @@
 
 		<!-- Latest compiled JavaScript -->
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-		
+
 		<link rel="stylesheet" type="text/css" href="{% static 'account/Account_management.css' %}"/>
 		<script src="{% static 'account/jquery-1.12.3.js' %}"></script>
 		<script src="{% static 'account/Account_management.js' %}"></script>

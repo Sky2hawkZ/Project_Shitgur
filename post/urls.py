@@ -21,6 +21,6 @@ urlpatterns = [
     url(r'^next_post/(?P<post_id>[0-9]+)', views.post_next, name="next_post"),
     url(r'^prev_post/(?P<post_id>[0-9]+)', views.post_prev, name="prev_post"),
 
-
+    url(r'^get_random', views.get_random, name="get_random"),
 
 ]

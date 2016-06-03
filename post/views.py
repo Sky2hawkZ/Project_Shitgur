@@ -23,6 +23,15 @@ def detail(request, post_id):
         return render(request, 'post/DoesNotExist.html')
     return render(request, 'post/detail.html', {'post': post, 'comment': out})
 
+def get_random(request):
+
+        random_post = Post.objects.order_by('?').first()
+        post_id = random_post.id
+        out = Comment.objects.filter(comment_post=post_id)
+        random_post.post_views = getattr(random_post, 'post_views') + 1
+        random_post.save()
+        return render(request, 'post/detail.html', {'post': random_post, 'comment': out})
+
 
 def post_next(request, post_id):
     new_id = str(int(post_id)+1)
@@ -33,7 +42,9 @@ def post_next(request, post_id):
         post.save()
         return render(request, 'post/detail.html', {'post': post, 'comment': out})
     except Post.DoesNotExist:
-        raise Http404()
+        post = Post.objects.get(pk=post_id)
+        out = Comment.objects.filter(comment_post=post_id)
+        return render(request, 'post/detail.html', {'post': post, 'comment': out})
 
 
 def post_prev(request, post_id):
@@ -45,8 +56,9 @@ def post_prev(request, post_id):
         post.save()
         return render(request, 'post/detail.html', {'post': post, 'comment': out})
     except Post.DoesNotExist:
-        raise Http404()
-
+        post = Post.objects.get(pk=post_id)
+        out = Comment.objects.filter(comment_post=post_id)
+        return render(request, 'post/detail.html', {'post': post, 'comment': out})
 
 def user_post_like(request, post_id):
 
