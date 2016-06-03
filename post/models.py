@@ -11,7 +11,7 @@ class Post(models.Model):
     post_points = models.IntegerField(default=0)
     post_views = models.IntegerField(default=0)
     post_favorited = models.IntegerField(default=0)
-    post_image = models.ImageField()
+    post_image = models.ImageField(upload_to="post/media/uploaded_images")
     post_tags = models.CharField(max_length=1000, default=None)
     post_user = models.ForeignKey(User, on_delete=models.CASCADE)
     post_IsAdvertised = models.BooleanField(default='false')

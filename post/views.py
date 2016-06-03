@@ -5,7 +5,6 @@ from django.db import models
 from django.http import HttpResponse, Http404
 from django.contrib.auth.decorators import login_required
 from models import Post, Comment, Points_Post, Points_Comment
-from forms import UploadImageForm
 from datetime import datetime
 
 def index(request):
@@ -248,12 +247,11 @@ def post_comment(request):
             return render(request, 'post/detail.html', {'post': post, 'comment': out})
 
 def upload_post(request):
-    upload_form = UploadImageForm(request.POST or None, request.FILES)
-    context = {'upload_form': upload_form}
-    print(context)
-    if upload_form.is_valid():
-        print(context)
-        upload_form.save()
-        return render(request, 'post/frontpage.html', context)
-    else:
-        return render(request, 'post/frontpage.html', context)
+    text  = request.POST.get('postTitle', '')
+    tags  = request.POST.get('tags', '')
+    image  = request.FILES.get('imageupload', '')
+
+    new_post = Post(post_text = text, post_tags= tags, post_image = image, post_user = request.user)
+    new_post.save()
+
+    return render(request, 'post/frontpage.html')
