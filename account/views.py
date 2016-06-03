@@ -6,7 +6,6 @@ from django.contrib import auth
 from account.models import user_data
 from forms import UserDataForm
 from forms import UserForm
-from django.core.mail import send_mail
 
 # Note to people messing around with the code: 
 
@@ -73,6 +72,8 @@ def fetch_user_data(request):
     context = {'users': users, 'data': data}
     return render(request, account_management, context)
 
+"""work in progress below this line"""
+
 # Load forms and account management page, used in register and authview(log in)
 @login_required
 def accmanage_regauth(request):
@@ -117,60 +118,3 @@ def authview(request):
         return redirect('Management')
     else:
         return render(request, logreg_error)
-
-"""Work in Progress, smtpexception."""
-
-
-
-# Note this is for testing the email function of django
-
-# once tested and working: 
-# change the function so that it will include a link to a template where user may change password.
-# note: link should expire within 10 minutes after sent email
-
-# uncomment when resuming development
-"""
-def send_passwordmail(request):
-    # if user is logged in
-    if request.user.is_authenticated():
-        return redirect('Management')
-    else: 
-        # fetch data
-        email = request.POST.get('email', '')
-        birthday = request.POST.get('birthday', '')
-
-        # if user exists
-        if assert_user(email, birthday) == True:
-            # set variable to user password
-            user_password = fetch_user_password(email)
-            # add user model
-            user = User.objects.get(email=email)
-            # send email and render login page
-            send_mail('Your password', 
-                      'You have recieved this message because you have requested a new password.' + 
-                      'And here it is:' + user_password, 
-                      'passresetmanagemaster@gmail.com',
-                      [user.email], 
-                      fail_silently=False)
-            return render(request, logreg_success)
-        else:
-            return render(request, logreg_error)
-
-# fetch the users password and return it as a string
-def fetch_user_password(user_email):
-    user = User.objects.get(email=user_email)
-    if user_email == user.email:
-        return str(user.password)
-
-# assert that the email and date of birth exists and belongs to the same user then return True or False
-def assert_user(user_email, user_birthday):
-    try:
-        user = User.objects.get(email=user_email)
-        if user_birthday == str(user.user_data.date_of_birth):
-            return True
-        else:
-            return False
-    except User.DoesNotExist:
-        return False
-
-"""

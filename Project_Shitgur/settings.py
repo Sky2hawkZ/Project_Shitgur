@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # 'account_login_registration',
 
 INSTALLED_APPS = [
+    'django.contrib.humanize',
     'Project_Shitgur',
     'account.apps.AccountConfig',
     'post',
@@ -122,30 +123,6 @@ USE_L10N = True
 USE_TZ = True
 
 
-# uncomment when resuming development
-"""
-
-# email set up
-
-#gmail details
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'passresetmanagemaster@gmail.com'
-EMAIL_HOST_PASSWORD = 'n7u86QAsZxbpBzcef25Pt9v3o4iERYLyjdX'
-
-# port and protocol
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-
-# gotta assume this set default
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-
-# backend
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
-"""
-
-
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
@@ -153,5 +130,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     "post/static/post/",
 )
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'

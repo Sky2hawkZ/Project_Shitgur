@@ -9,17 +9,21 @@
 
     <link rel="stylesheet" href="{% static 'css/detail.css' %}">
 </head>
+
+
+<!--- the post !--->
 <div class="container">
     <div post_main>
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default" id="panel">
-                    <div class="panel-body">
-                        <h4>{{ post.post_text }}
-                            <a href="{% url 'post:next_post' post_id=post.id%}">
-                            <button type="button" class="btn btn-default" style="float:right">Next Post
+                    <div class="panel-body" style="background-color:white; color: black">
+                        <h4>{{ post.post_text }} </h4>
+                            <a href="{% url 'post:next_post' post_id=post.id%}" style="color: black;">
+                            <button type="button" class="btn btn-default" style="float:right;">Next Post
                             <span class="glyphicon glyphicon-menu-right"></span>
                                 </a>
+
                         </button>
                              <a href="{% url 'post:prev_post' post_id=post.id%}">
                             <button type="button" class="btn btn-default" style="float:right">  Prev
@@ -101,7 +105,7 @@
                               </a>
                          <a href="{% url 'post:dislike_comment' post_id=post.id comment_id=x.id%}">
                             <span id="FeelsBadMan_comment">
-                                <img src="http://vignette3.wikia.nocookie.net/cookietest/images/e/e2/FeelsBadMan.png/revision/latest?cb=20150708084237" style="margin-left: 10px; width: 35px; height: 30px;"> <span style="float:right; font-size: 12px;">{{x.comment_points | intcomma }} Points</span>
+                                <img src="http://vignette3.wikia.nocookie.net/cookietest/images/e/e2/FeelsBadMan.png/revision/latest?cb=20150708084237" style="margin-left: 10px; width: 35px; height: 30px;"> <span style="float:right; font-size: 12px; color: black;">{{x.comment_points | intcomma }} Points</span>
                             </span>
                              </a>
 
@@ -115,11 +119,11 @@
 {% endfor %}
 
         {% if user.is_authenticated %}
-<!-- if logged on !-->
+<!-- if logged on show commentbox!-->
 <div class="container">
     <div class="row">
         <div class="col-sm-8 col-md-offset-2">
-            <div class="panel panel-white post panel-shadow">
+            <div class="panel" style="border-radius: 50px;">
                 <div id="comment_box" class="input-field">
 								<div class="status-upload" >
 									<form action="{% url 'post:post_comment' %}" method="post">

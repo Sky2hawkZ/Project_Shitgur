@@ -13,8 +13,7 @@
                     <a href="#register" id="tab_two">new account</a>
                 </li>
                 <li>
-                    <!--uncomment when resuming development of this feature-->
-                    <!--<a href="#reset" id="tab_three">Forgot password?</a>-->
+                    <a href="#reset" id="tab_three">Forgot password?</a>
                 </li>
             </ul>
             <div id="login" class="form-action show">
@@ -60,23 +59,22 @@
                 </form>
             </div>
             <!--/#register.form-action-->
-            <!--uncomment when resuming development for this feature-->
-            <!--<div id="reset" class="form-action hide">
+            <div id="reset" class="form-action hide">
                 <h1>Password reset</h1>
-                <form method="post"> {% csrf_token %}
+                <form>
                     <ul>
                         <li>
-                            <input type="text" placeholder="Email" name="email"/>
+                            <input type="text" placeholder="Email" />
                         </li>
                         <li>
-                            <input type="text" placeholder="Birthday" name="birthday" />
+                            <input type="text" placeholder="Birthday" />
                         </li>
                         <li>
                             <input type="submit" value="Send" class="button" />
                         </li>
                     </ul>
                 </form>
-            </div>-->
+            </div>
             <!--/#register.form-action-->
         </div>
 	<!--/static files-->
