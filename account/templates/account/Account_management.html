@@ -3,101 +3,99 @@
 
 {% block content %}
 {% block body %}
-		<h4>Account management, welcome {{ user.first_name }}</h4>
-		<br>
-		<div class="screen_center">
-			<div class="screen_center_refined">
-				<!--/first accordion(profile)-->
-				<dl class="accordion">
-				  {% block error %}{% endblock error %}
-			      {% block success %}{% endblock success %}
-				  <dt class="accordion__title">Profile</dt>
-				  <dd class="accordion__content">
-					<div action="{% url "fetch_user_data" %}" class="fetch_details">
-						<p><b>Profile image:</b></p>
-						<img src="{{ user.user_data.user_image.url }}" width="145" height="126" alt="Can't display image" id="user_image"><br>
-						<br>
-						<p><b>First name:</b> {{ user.first_name }}</p>
-						<br>
-						<p><b>Last name:</b> {{ user.last_name }}</p>
-						<br>
-						<p><b>Gender:</b> {{ user.user_data.get_gender_display }}</p>
-						<br>
-						<p><b>About:</b><br>{{ user.user_data.about }}</p>
-					</div>
-				  </dd>
-				  <!--/second accordion(favorites)-->
-				  <dt class="accordion__title">Favorites</dt>
-				  <dd class="accordion__content">
-					<div class="accordion_two">
-						<div class="accordion_two-section">
-							<!--/first nested accordion(favorite images)-->
-							<a class="accordion_two-section-title" href="#accordion_1 ">Favorite images</a>
-							<div id="accordion_1" class="accordion_two-section-content">
-								<p>This is where favorite images should be.</p>
-								<p>Note: Should be, didn't say that the stuff is here... at all</p>
-							</div><!--end .accordion-section-content-->
-							<!--/second nested accordion(favorite comments)-->
-							<a class="accordion_two-section-title" href="#accordion_2 ">Favorite comments</a>
-							<div id="accordion_2" class="accordion_two-section-content">
-								<p>This is where favorite comments should be.</p>
-								<p>Note: Should be, didn't say that the stuff is here... at all</p>
-							</div><!--end .accordion-section-content-->
-						</div><!--end .accordion-section-->
-					</div><!--end .accordion-->
-				  </dd>
-				  <!--/third accordion(details)-->
-				  <dt class="accordion__title">Details</dt>
-				  <dd class="accordion__content">
-					<form action="{% url "update_user_info" %}" method="post" enctype='multipart/form-data'> {% csrf_token %}
-						<div class="input_field">
-							<p><b>Profile image:</b> </p>{{user_data_form.user_image}}<br>
-							<p><b>First name:</b> </p>{{user_form.first_name}}<br>
-							<br>
-							<p><b>Last name:</b> </p>{{user_form.last_name}}<br>
-							<br>
-							<p><b>Date of birth:</b> </p>{{user_data_form.date_of_birth}}<br>
-							<br>
-							<p><b>Gender:</b> </p>
-							{{ user_data_form.gender }}<br>
-							{{user_form.gender.errors}}
-							<br>
-							<p><b>Country:</b> </p>{{user_data_form.country}}<br>
-							<br>
-							<p><b>About:</b> </p>{{user_data_form.about}}<br>
-						</div>
-						<br>
-						<input id="submit_button" type="submit" value="Save changes">
-					</form>
-				  </dd>
-				  <!--/third accordion(favorites)-->
-				  <dt class="accordion__title">Security</dt>
-				  <dd class="accordion__content">
-					<form action="{% url "update_password" %}" method="post"> {% csrf_token %}
-						<div class="input_field">
-							<p><b>Current password:</b></p><input type="password" name="current_password"><br>
-							<br>
-							<p><b>New password:</b></p><input type="password" name="new_password"><br>
-							<br>
-							<p><b>Repeat password:</b></p><input type="password" name="repeat_password"><br>
-						</div>
-						<br>
-						<input id="button" type="submit" value="Update password">
-					</form>
-				  </dd>
-				</dl>
-			</div>
-		<!--/static files-->
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <h4>Account management, welcome {{ user.first_name }}</h4>
+        <br>
+        <div class="screen_center">
+            <div class="screen_center_refined">
+                <!--/first accordion(profile)-->
+                <dl class="accordion">
+                  {% block error %}{% endblock error %}
+                  {% block success %}{% endblock success %}
+                  <dt class="accordion__title">Profile</dt>
+                  <dd class="accordion__content">
+                    <div action="{% url "fetch_user_data" %}" class="fetch_details">
+                        <p><b>Profile image:</b></p>
+                        <img src="{{ user.user_data.user_image.url }}" width="145" height="126" alt="Can't display image" id="user_image"><br>
+                        <br>
+                        <p><b>First name:</b> {{ user.first_name }}</p>
+                        <br>
+                        <p><b>Last name:</b> {{ user.last_name }}</p>
+                        <br>
+                        <p><b>Gender:</b> {{ user.user_data.get_gender_display }}</p>
+                        <br>
+                        <p><b>About:</b><br>{{ user.user_data.about }}</p>
+                    </div>
+                  </dd>
+                  <!--/second accordion(favorites) uncomment when continuing development of this feature-->
+                  <!--<dt class="accordion__title">Favorites</dt>
+                  <dd class="accordion__content">
+                    <div class="accordion_two">
+                        <div class="accordion_two-section">
+                            <a class="accordion_two-section-title" href="#accordion_1 ">Favorite images</a>
+                            <div id="accordion_1" class="accordion_two-section-content">
+                                <p>This is where favorite images should be.</p>
+                                <p>Note: Should be, didn't say that the stuff is here... at all</p>
+                            </div>
+                            <a class="accordion_two-section-title" href="#accordion_2 ">Favorite comments</a>
+                            <div id="accordion_2" class="accordion_two-section-content">
+                                <p>This is where favorite comments should be.</p>
+                                <p>Note: Should be, didn't say that the stuff is here... at all</p>
+                            </div>
+                        </div>
+                    </div>
+                  </dd>-->
+                  <!--/third accordion(details)-->
+                  <dt class="accordion__title">Details</dt>
+                  <dd class="accordion__content">
+                    <form action="{% url "update_user_info" %}" method="post" enctype='multipart/form-data'> {% csrf_token %}
+                        <div class="input_field">
+                            <p><b>Profile image:</b> </p>{{user_data_form.user_image}}<br>
+                            <p><b>First name:</b> </p>{{user_form.first_name}}<br>
+                            <br>
+                            <p><b>Last name:</b> </p>{{user_form.last_name}}<br>
+                            <br>
+                            <p><b>Date of birth:</b> </p>{{user_data_form.date_of_birth}}<br>
+                            <br>
+                            <p><b>Gender:</b> </p>
+                            {{ user_data_form.gender }}<br>
+                            {{user_form.gender.errors}}
+                            <br>
+                            <p><b>Country:</b> </p>{{user_data_form.country}}<br>
+                            <br>
+                            <p><b>About:</b> </p>{{user_data_form.about}}<br>
+                        </div>
+                        <br>
+                        <input id="submit_button" type="submit" value="Save changes">
+                    </form>
+                  </dd>
+                  <!--/third accordion(favorites)-->
+                  <dt class="accordion__title">Security</dt>
+                  <dd class="accordion__content">
+                    <form action="{% url "update_password" %}" method="post"> {% csrf_token %}
+                        <div class="input_field">
+                            <p><b>Current password:</b></p><input type="password" name="current_password"><br>
+                            <br>
+                            <p><b>New password:</b></p><input type="password" name="new_password"><br>
+                            <br>
+                            <p><b>Repeat password:</b></p><input type="password" name="repeat_password"><br>
+                        </div>
+                        <br>
+                        <input id="button" type="submit" value="Update password">
+                    </form>
+                  </dd>
+                </dl>
+            </div>
+        <!--/static files-->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
-		<!-- Latest compiled JavaScript -->
-		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-		
-		<link rel="stylesheet" type="text/css" href="{% static 'account/Account_management.css' %}"/>
-		<script src="{% static 'account/jquery-1.12.3.js' %}"></script>
-		<script src="{% static 'account/Account_management.js' %}"></script>
-		<!--/static files-->
-		</div>
+        <!-- Latest compiled JavaScript -->
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        
+        <link rel="stylesheet" type="text/css" href="{% static 'account/Account_management.css' %}"/>
+        <script src="{% static 'account/jquery-1.12.3.js' %}"></script>
+        <script src="{% static 'account/Account_management.js' %}"></script>
+        <!--/static files-->
+        </div>
 {% endblock body %}
 {% endblock %}

@@ -9,5 +9,8 @@ urlpatterns = [
     url(r'^update_password$', views.update_password, name='update_password'),
     url(r'^update_user_info$', views.update_user_info, name='update_user_info'),
     url(r'^fetch_user_data$', views.fetch_user_data, name='fetch_user_data'),
-    url(r'^Management$', views.accmanage_regauth, name='Management')
+    url(r'^Management$', views.accmanage_regauth, name='Management'),
 ]
+
+# uncomment and add to urlpatterns when resuming development
+# url(r'^reset_password$', views.send_passwordmail, name='reset_password')
