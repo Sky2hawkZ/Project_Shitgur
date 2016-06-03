@@ -6,6 +6,8 @@ from django.contrib import auth
 from account.models import user_data
 from forms import UserDataForm
 from forms import UserForm
+from django.contrib.auth import logout
+
 
 # Note to people messing around with the code: 
 
@@ -82,6 +84,11 @@ def accmanage_regauth(request):
 
     context = {'user_form': user_form, 'user_data_form': user_data_form}
     return render(request, account_management, context)
+
+
+def logout_view(request):
+    logout(request)
+    return render(request, logreg)
 
 # Create new user
 def register(request):
