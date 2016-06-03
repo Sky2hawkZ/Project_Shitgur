@@ -15,6 +15,19 @@ def index(request):
 
 def detail(request, post_id):
     try:
+        post = Post.objects.get(pk=post_id)
+        out = Comment.objects.filter(comment_post=post_id)
+        post.post_views = getattr(post, 'post_views') +1
+        post.save()
+
+    except post.DoesNotExist:
+        return render(request, 'post/DoesNotExist.html')
+    return render(request, 'post/detail.html', {'post': post, 'comment': out})
+
+
+def post_next(request, post_id):
+    new_id = str(int(post_id)+1)
+    try:
         post = Post.objects.get(pk=new_id)
         out = Comment.objects.filter(comment_post=new_id)
         post.post_views = getattr(post, 'post_views') + 1
@@ -22,21 +35,6 @@ def detail(request, post_id):
         return render(request, 'post/detail.html', {'post': post, 'comment': out})
     except Post.DoesNotExist:
         raise Http404()
-
-def upload_post(request):
-    upload_form = UploadImageForm(request.POST or None, request.FILES)
-    context = {'upload_form': upload_form}
-    print(context)
-    if upload_form.is_valid():
-        print(context)
-        upload_form.save()
-        return render(request, 'post/frontpage.html', context)
-    else:
-        return render(request, 'post/frontpage.html', context)
-
-def post_next(request, post_id):
-    new_id = str(int(post_id)+1)
-
 
 
 def post_prev(request, post_id):
@@ -248,3 +246,14 @@ def post_comment(request):
             tmp.save()
             out = Comment.objects.filter(comment_post=post_id)
             return render(request, 'post/detail.html', {'post': post, 'comment': out})
+
+def upload_post(request):
+    upload_form = UploadImageForm(request.POST or None, request.FILES)
+    context = {'upload_form': upload_form}
+    print(context)
+    if upload_form.is_valid():
+        print(context)
+        upload_form.save()
+        return render(request, 'post/frontpage.html', context)
+    else:
+        return render(request, 'post/frontpage.html', context)

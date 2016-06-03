@@ -11,6 +11,3 @@ account_management/urls.pyc
 account_management/views.pyc
 account_management/__init__.pyc
 db.sqlite3
-post/templates/post/Index.html
-account/migrations/0002_auto_20160517_0925.pyc
-account/migrations/0005_auto_20160518_1132.pyc
