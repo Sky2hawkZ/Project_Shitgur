@@ -1,28 +1,16 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView
 from django.shortcuts import render, Http404, get_object_or_404
-from random import random
 from django.db import models
 from django.http import HttpResponse, Http404
 from django.contrib.auth.decorators import login_required
 from models import Post, Comment, Points_Post, Points_Comment
-
+from datetime import datetime
 
 def index(request):
     all_gallery_posts = Post.objects.all()
     context = {'all_gallery_posts': all_gallery_posts}
     return render(request, 'post/frontpage.html', context)
-
-
-def get_random(request):
-
-        random_post = Post.objects.order_by('?').first()
-        post_id = random_post.id
-        out = Comment.objects.filter(comment_post=post_id)
-        random_post.post_views = getattr(random_post, 'post_views') + 1
-        random_post.save()
-        return render(request, 'post/detail.html', {'post': random_post, 'comment': out})
-
 
 def detail(request, post_id):
     try:
@@ -45,9 +33,7 @@ def post_next(request, post_id):
         post.save()
         return render(request, 'post/detail.html', {'post': post, 'comment': out})
     except Post.DoesNotExist:
-        post = Post.objects.get(pk=post_id)
-        out = Comment.objects.filter(comment_post=post_id)
-        return render(request, 'post/detail.html', {'post': post, 'comment': out})
+        raise Http404()
 
 
 def post_prev(request, post_id):
@@ -59,12 +45,9 @@ def post_prev(request, post_id):
         post.save()
         return render(request, 'post/detail.html', {'post': post, 'comment': out})
     except Post.DoesNotExist:
-        post = Post.objects.get(pk=post_id)
-        out = Comment.objects.filter(comment_post=post_id)
-        return render(request, 'post/detail.html', {'post': post, 'comment': out})
+        raise Http404()
 
 
-@login_required
 def user_post_like(request, post_id):
 
     try:
@@ -96,7 +79,6 @@ def user_post_like(request, post_id):
                                                     'comment': Comment.objects.filter(comment_post=post_id)})
 
 
-@login_required
 def user_post_dislike(request, post_id):
 
     try:
@@ -128,7 +110,6 @@ def user_post_dislike(request, post_id):
                                                     'comment': Comment.objects.filter(comment_post=post_id)})
 
 
-@login_required
 def user_comment_like(request, post_id , comment_id):
 
     try:
@@ -162,7 +143,6 @@ def user_comment_like(request, post_id , comment_id):
                                                     'comment': Comment.objects.filter(comment_post=post_id)})
 
 
-@login_required
 def user_comment_dislike(request, post_id, comment_id):
 
     try:
@@ -196,7 +176,6 @@ def user_comment_dislike(request, post_id, comment_id):
                                                     'comment': Comment.objects.filter(comment_post=post_id)})
 
 
-@login_required
 def user_comment_favorite(request, post_id, comment_id):
 
     try:
@@ -227,7 +206,6 @@ def user_comment_favorite(request, post_id, comment_id):
                                                     'comment': Comment.objects.filter(comment_post=post_id)})
 
 
-@login_required
 def user_post_favorite(request, post_id):
     try:
         post = Post.objects.get(pk=post_id)
@@ -254,7 +232,6 @@ def user_post_favorite(request, post_id):
                                                     'comment': Comment.objects.filter(comment_post=post_id)})
 
 
-@login_required
 def post_comment(request):
 
     if request.POST:
@@ -269,7 +246,12 @@ def post_comment(request):
             out = Comment.objects.filter(comment_post=post_id)
             return render(request, 'post/detail.html', {'post': post, 'comment': out})
 
-    return render(request, 'post/index.html')
+def upload_post(request):
+    text  = request.POST.get('postTitle', '')
+    tags  = request.POST.get('tags', '')
+    image  = request.FILES.get('imageupload', '')
 
+    new_post = Post(post_text = text, post_tags= tags, post_image = image, post_user = request.user)
+    new_post.save()
 
-
+    return render(request, 'post/frontpage.html')

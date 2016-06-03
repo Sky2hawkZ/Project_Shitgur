@@ -33,7 +33,7 @@
 
       {% for gallerypost in all_gallery_posts %}
       <div class="col-xs-3">
-        <a target="" href="{% url 'post:detail' post_id=gallerypost.id %}">
+        <a target="" href="{% url 'post:gallery' post_id=gallerypost.id %}">
           <img src="{{gallerypost.post_image.url}}" width="300" height="200">
         </a>
         <div class="desc"><h2>{{gallerypost.post_text}}</h2></div>
@@ -83,6 +83,7 @@
                 </div><!-- /.col-lg-4 -->
               {% endif %}
             {% endfor %}
+            
           </div><!-- /.row -->
           <div class="row">
             <div class="panel panel-inverse">
